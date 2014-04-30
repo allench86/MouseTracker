@@ -1,0 +1,5 @@
+{"ACTIONS":[{"ACTION":"com.ibm.biginsights.g2t.mouse.Click","BUTTON":"LEFT_BUTTON","POINT":{"x": 596, "y": 500},"OFFSET":"9436"},
+{"ACTION":"com.ibm.biginsights.g2t.mouse.Click","BUTTON":"LEFT_BUTTON","POINT":{"x": 632, "y": 284},"OFFSET":"10450"},
+{"ACTION":"com.ibm.biginsights.g2t.mouse.DragDrop","BUTTON":"LEFT_BUTTON","FROM_POINT":{"x": 603, "y": 348},"TO_POINT":{"x": 603, "y": 348},"OFFSET":"10799"},
+{"ACTION":"com.ibm.biginsights.g2t.mouse.Click","BUTTON":"LEFT_BUTTON","POINT":{"x": 704, "y": 394},"OFFSET":"18663"},
+{"ACTION":"com.ibm.biginsights.g2t.mouse.Click","BUTTON":"LEFT_BUTTON","POINT":{"x": 277, "y": 562},"OFFSET":"19316"}]}

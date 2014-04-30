@@ -1,0 +1,5 @@
+{"ACTIONS":[{"ACTION":"com.ibm.biginsights.g2t.mouse.Click","BUTTON":"LEFT_BUTTON","POINT":{"x": 7, "y": 15},"OFFSET":"715"},
+{"ACTION":"com.ibm.biginsights.g2t.mouse.DoubleClick","BUTTON":"LEFT_BUTTON","POINT":{"x": 7, "y": 15},"OFFSET":"715"},
+{"ACTION":"com.ibm.biginsights.g2t.mouse.DragDrop","BUTTON":"LEFT_BUTTON","FROM_POINT":{"x": 7, "y": 15},"TO_POINT":{"x": 4, "y": 19},"OFFSET":"715"},
+{"ACTION":"com.ibm.biginsights.g2t.keyboard.KeyPressed","KEY_CODE":"15","OFFSET":"715"},
+{"ACTION":"com.ibm.biginsights.g2t.keyboard.KeyReleased","KEY_CODE":"15","OFFSET":"715"}]}
