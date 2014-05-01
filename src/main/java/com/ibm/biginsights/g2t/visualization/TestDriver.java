@@ -42,6 +42,8 @@ public class TestDriver
     private static final String TEST_CONFIG_FILE_NAME = "test.config";
     private static final String ACTION_FILE_NAME = "actions.json";
     private static final String TEST_FOLDER = "test_folder";
+    private static final String BROWSER_TYPE = "browser";
+    private static final Browsers DEFAULT_BROWSER = Browsers.FIREFOX;
 
     public static void main(String[] args)
     {
@@ -71,7 +73,12 @@ public class TestDriver
 
             String url = testConfig.getProperty(URL);
             ScreenResolution screenResolution = getScreenResolutionFromConfig(testConfig.getProperty(SCREENSIZE));
-            Browsers browser = Browsers.FIREFOX;
+
+            Browsers browser = DEFAULT_BROWSER;
+            String browserTypeString = line.getOptionValue(BROWSER_TYPE);
+            if(!browserTypeString.isEmpty()) {
+                browser = Browsers.valueOf(browserTypeString.toUpperCase());
+            }
 
             webDriver = WebDriverFactory.getSeleniumWebDriver(browser);
 
@@ -225,6 +232,13 @@ public class TestDriver
                 .create(TEST_FOLDER);
         testFolderOption.setRequired(true);
         options.addOption(testFolderOption);
+
+        Option browserOption = OptionBuilder
+                .withArgName(BROWSER_TYPE).withType(String.class)
+                .hasArgs(1)
+                .withDescription("Browser to run the test: ie, firefox(default)")
+                .create(BROWSER_TYPE);
+        options.addOption(browserOption);
         return options;
     }
 
