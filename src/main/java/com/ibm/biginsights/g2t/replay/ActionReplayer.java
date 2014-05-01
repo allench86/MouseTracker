@@ -53,6 +53,7 @@ public class ActionReplayer
                 }
                 else if (event instanceof ScreenshotEvent)
                 {
+                    Thread.sleep(((ScreenshotEvent) event).getOffset() - preOffset);
                     screenshotTaker.takeScreenshot();
                     ScreenshotEvent screenshotEvent = (ScreenshotEvent) event;
                     preOffset = screenshotEvent.getOffset();
