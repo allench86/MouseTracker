@@ -9,6 +9,7 @@ Servers
 *.index
 *.class
 target/
+testDemo/
 .classpath
 .settings
 *.tmproj
