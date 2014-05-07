@@ -26,6 +26,7 @@ public class KeyboardInputListenerImpl implements NativeKeyListener
 
     public void nativeKeyPressed(NativeKeyEvent e)
     {
+        System.out.println("KeyPressed: " + e.getKeyCode());
         if (e.getKeyCode() == NativeKeyEvent.VK_ESCAPE)
         {
             System.out.println("Stop recording...");
@@ -34,7 +35,7 @@ public class KeyboardInputListenerImpl implements NativeKeyListener
                 GlobalScreen.unregisterNativeHook();
             }
         }
-        else if (e.getKeyCode() == NativeKeyEvent.VK_PRINTSCREEN || e.getKeyCode() == 61440 || e.getKeyCode() == 16)
+        else if (e.getKeyCode() == NativeKeyEvent.VK_PRINTSCREEN || e.getKeyCode() == NativeKeyEvent.VK_F13)
         {
             System.out.println("Take screenshot...");
             screenshotEventRecorder.addScreenshotEvent(screenshotTaker.getScreenshotIndex(), e.getWhen());
@@ -58,7 +59,7 @@ public class KeyboardInputListenerImpl implements NativeKeyListener
         {
             // do nothing
         }
-        else if (e.getKeyCode() == NativeKeyEvent.VK_PRINTSCREEN || e.getKeyCode() == 61440)
+        else if (e.getKeyCode() == NativeKeyEvent.VK_PRINTSCREEN || e.getKeyCode() == NativeKeyEvent.VK_F13)
         {
             // do nothing
         }

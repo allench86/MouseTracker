@@ -23,8 +23,6 @@ import com.ibm.biginsights.g2t.screen.ScreenResolution;
 import com.ibm.biginsights.g2t.screen.ScreenshotTaker;
 import com.ibm.biginsights.g2t.visualization.exception.G2TVisualizationTestException;
 import com.ibm.biginsights.g2t.visualization.exception.ScreenResolutionParseErrorException;
-import com.ibm.biginsights.g2t.visualization.exception.ScreenshotDifferentException;
-import com.ibm.biginsights.g2t.visualization.exception.UnknownEventException;
 import com.ibm.biginsights.g2t.web.Browsers;
 import com.ibm.biginsights.g2t.web.WebDriverFactory;
 
@@ -76,7 +74,8 @@ public class TestDriver
 
             Browsers browser = DEFAULT_BROWSER;
             String browserTypeString = line.getOptionValue(BROWSER_TYPE);
-            if(!browserTypeString.isEmpty()) {
+            if (browserTypeString != null && !browserTypeString.isEmpty())
+            {
                 browser = Browsers.valueOf(browserTypeString.toUpperCase());
             }
 
@@ -122,8 +121,8 @@ public class TestDriver
     }
 
     private static void doReplay(WebDriver webDriver, String actionFilePath, String screenshotFolder, String url,
-            ScreenResolution screenResolution) throws IOException, JSONException, UnknownEventException,
-            InterruptedException, ScreenshotDifferentException
+            ScreenResolution screenResolution) throws IOException, JSONException, InterruptedException,
+            G2TVisualizationTestException
     {
         ScreenshotTaker screenshotTaker;
         boolean isPlaybackMode;

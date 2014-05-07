@@ -9,6 +9,7 @@ import com.ibm.biginsights.g2t.screen.ScreenshotComparator;
 import com.ibm.biginsights.g2t.screen.ScreenshotEvent;
 import com.ibm.biginsights.g2t.screen.ScreenshotTaker;
 import com.ibm.biginsights.g2t.visualization.Event;
+import com.ibm.biginsights.g2t.visualization.exception.G2TVisualizationTestException;
 import com.ibm.biginsights.g2t.visualization.exception.ScreenshotDifferentException;
 import com.ibm.biginsights.g2t.visualization.exception.UnknownEventException;
 
@@ -34,7 +35,7 @@ public class ActionReplayer
         setScreenshotTaker(screenshotTaker);
     }
 
-    public void replay() throws InterruptedException, UnknownEventException, IOException, ScreenshotDifferentException
+    public void replay() throws InterruptedException, IOException, G2TVisualizationTestException
     {
         long preOffset = 0;
         if (eventSequence != null)
@@ -83,12 +84,14 @@ public class ActionReplayer
         this.eventSequence = eventSequence;
     }
 
-    private void replayKeyboardEvent(Event event, long preOffset) throws InterruptedException, UnknownEventException
+    private void replayKeyboardEvent(Event event, long preOffset) throws InterruptedException,
+            G2TVisualizationTestException
     {
         keyboardEventPlayer.playEvent(event, preOffset);
     }
 
-    private void replayMouseEvent(Event event, long preOffset) throws InterruptedException, UnknownEventException
+    private void replayMouseEvent(Event event, long preOffset) throws InterruptedException,
+            G2TVisualizationTestException
     {
         mouseEventPlayer.playEvent(event, preOffset);
     }

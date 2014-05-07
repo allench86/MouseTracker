@@ -29,7 +29,7 @@ public class MouseRecorderImpl implements MouseRecorder
         {
             Event event = new DoubleClick(MouseButton.fromInteger(button), point, when - startTime);
             eventSequence.add(event);
-            System.out.println(event);
+            System.out.println("MouseEventDoubleClick:" + event);
         }
         else
         {
@@ -37,7 +37,7 @@ public class MouseRecorderImpl implements MouseRecorder
             {
                 Event event = new Click(MouseButton.fromInteger(button), point, when - startTime);
                 eventSequence.add(event);
-                System.out.println(event);
+                System.out.println("MouseEventClick:" + event);
                 times--;
             }
         }
@@ -78,7 +78,10 @@ public class MouseRecorderImpl implements MouseRecorder
 
     private void draggingFinished()
     {
-        System.out.println(tmpDragDrop);
+        if (tmpDragDrop != null)
+        {
+            System.out.println("MouseEventDragDrop:" + tmpDragDrop);
+        }
         tmpDragDrop = null;
     }
 
