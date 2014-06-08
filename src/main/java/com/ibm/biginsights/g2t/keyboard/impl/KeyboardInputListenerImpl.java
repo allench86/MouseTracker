@@ -15,10 +15,11 @@ import com.ibm.biginsights.g2t.screen.ScreenshotTaker;
 public class KeyboardInputListenerImpl implements NativeKeyListener
 {
     private static final boolean IS_OSX = NativeSystem.getFamily() == NativeSystem.Family.OSX;
+    private static final HashMap<Integer, Integer> unrecognizableOSXKeys = new HashMap<Integer, Integer>();
     private KeyboardRecorder keyboardRecorder;
     private ScreenshotTaker screenshotTaker;
     private ScreenshotEventRecorder screenshotEventRecorder;
-    private static final HashMap<Integer, Integer> unrecognizableOSXKeys = new HashMap<Integer, Integer>();
+    private NativeKeyEvent currentPressedKey;
 
     public KeyboardInputListenerImpl(KeyboardRecorder keyboardRecorder,
             ScreenshotEventRecorder screenshotEventRecorder, ScreenshotTaker screenshotTaker)
@@ -26,11 +27,21 @@ public class KeyboardInputListenerImpl implements NativeKeyListener
         this.keyboardRecorder = keyboardRecorder;
         this.screenshotTaker = screenshotTaker;
         this.screenshotEventRecorder = screenshotEventRecorder;
+        currentPressedKey = null;
         setupUnrecognizableOSXKeys();
     }
 
     public void nativeKeyPressed(NativeKeyEvent e)
     {
+        if (currentPressedKey != null && currentPressedKey.equals(e))
+        {
+            return;
+        }
+        else
+        {
+            currentPressedKey = e;
+        }
+
         if (isEscPressed(e))
         {
             stopRecordingKeyBoardAction();
@@ -54,6 +65,7 @@ public class KeyboardInputListenerImpl implements NativeKeyListener
 
     public void nativeKeyReleased(NativeKeyEvent e)
     {
+        currentPressedKey = null;
         if (isEscPressed(e))
         {
             // do nothing
