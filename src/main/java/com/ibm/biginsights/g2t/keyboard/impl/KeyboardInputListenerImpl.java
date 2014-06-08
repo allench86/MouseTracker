@@ -33,7 +33,8 @@ public class KeyboardInputListenerImpl implements NativeKeyListener
 
     public void nativeKeyPressed(NativeKeyEvent e)
     {
-        if (currentPressedKey != null && currentPressedKey.equals(e))
+        if (currentPressedKey != null
+        	&& currentPressedKey.getRawCode() == e.getRawCode())
         {
             return;
         }
